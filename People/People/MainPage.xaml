@@ -8,7 +8,7 @@
     <Grid Padding="5" RowSpacing="5" ColumnSpacing="5"
           RowDefinitions="Auto,Auto,Auto,Auto,Auto,*">
 
-        <Border BackgroundColor="DarkBlue" Padding="10" Margin="0,10,0,0">
+        <Border BackgroundColor="#47017A" Padding="10" Margin="0,10,0,0">
             <Grid ColumnDefinitions="Auto,*" VerticalOptions="Center">
                 <Image Source="foto.jpg" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" />
 
@@ -21,7 +21,8 @@
 
         <Entry x:Name="newPerson"
                Grid.Row="1"
-           Placeholder="Enter name" />
+               Placeholder="Enter name"
+               BackgroundColor="#C5A9E4"/>
 
         <Button Text="Add Person"
             Grid.Row="2"
@@ -42,7 +43,8 @@
                         <Grid ColumnDefinitions="*,2*">
                             <Label Text="{Binding Id}" TextColor="{StaticResource Primary}" />
                             <Label Grid.Column="1" Text="{Binding Name}" TextColor="{StaticResource Primary}" />
-                            <Button Grid.Column="2" Text="Eliminar" Clicked="DeleteButtonClicked" CommandParameter="{Binding .}" TextColor="{StaticResource Primary}" WidthRequest="100"/>
+                            <Button Grid.Column="2" Text="Eliminar" Clicked="DeleteButtonClicked" CommandParameter="{Binding .}" 
+                                    TextColor="{StaticResource Primary}" WidthRequest="100" BackgroundColor="#FF9C9C"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
