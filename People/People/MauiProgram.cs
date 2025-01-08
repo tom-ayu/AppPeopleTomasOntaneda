@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using People.Models;
 
 namespace People;
 
@@ -18,9 +19,10 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+        string dbPath = FileAccessHelper.GetLocalFilePath("people.db3");
+        builder.Services.AddSingleton<PersonRepository>(s => ActivatorUtilities.CreateInstance<PersonRepository>(s, dbPath));
 
-		// TODO: Add statements for adding PersonRepository as a singleton
 
-		return builder.Build();
+        return builder.Build();
 	}
 }
