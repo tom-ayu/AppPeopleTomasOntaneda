@@ -15,7 +15,7 @@ public partial class MainPage : ContentPage
     {
         statusMessage.Text = "";
 
-        await App.PersonRepo.AddNewPerson(newPerson.Text);
+        await App.PersonRepo.AddNewPerson(TOnewPerson.Text);
         statusMessage.Text = App.PersonRepo.StatusMessage;
     }
 
@@ -34,6 +34,7 @@ public partial class MainPage : ContentPage
             await App.PersonRepo.DeletePerson(personaAEliminar);
             List<Person> personas = await App.PersonRepo.GetAllPeople();
             peopleList.ItemsSource = personas;
+
             await DisplayAlert("Confirmación", "Tomás Ontaneda acaba de eliminar un registro", "Ok");
         }
     }

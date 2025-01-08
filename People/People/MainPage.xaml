@@ -19,7 +19,7 @@
             </Grid>
         </Border>
 
-        <Entry x:Name="newPerson"
+        <Entry x:Name="TOnewPerson"
                Grid.Row="1"
                Placeholder="Enter name"
                BackgroundColor="#C5A9E4"/>

@@ -8,15 +8,15 @@ public class PersonRepository
 
     public string StatusMessage { get; set; }
 
-    private SQLiteAsyncConnection conn;
+    private SQLiteAsyncConnection TOconn;
 
     private async Task Init()
     {
-        if (conn != null)
+        if (TOconn != null)
             return;
 
-        conn = new SQLiteAsyncConnection(_dbPath);
-        conn.CreateTableAsync<Person>();
+        TOconn = new SQLiteAsyncConnection(_dbPath);
+        TOconn.CreateTableAsync<Person>();
     }
 
     public PersonRepository(string dbPath)
@@ -31,11 +31,10 @@ public class PersonRepository
         {
             await Init();
 
-            // basic validation to ensure a name was entered
             if (string.IsNullOrEmpty(name))
                 throw new Exception("Valid name required");
 
-            result = await conn.InsertAsync(new Person { Name = name });
+            result = await TOconn.InsertAsync(new Person { Name = name });
             //result = 0;
 
             StatusMessage = string.Format("{0} record(s) added (Name: {1})", result, name);
@@ -52,7 +51,7 @@ public class PersonRepository
         try
         {
             await Init();
-            return await conn.Table<Person>().ToListAsync();
+            return await TOconn.Table<Person>().ToListAsync();
         }
         catch (Exception ex)
         {
@@ -65,6 +64,6 @@ public class PersonRepository
     internal async Task DeletePerson(Person personaAEliminar)
     {
         await Init();
-        await conn.DeleteAsync(personaAEliminar);
+        await TOconn.DeleteAsync(personaAEliminar);
     }
 }
